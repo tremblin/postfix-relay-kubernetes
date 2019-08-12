@@ -50,7 +50,7 @@ smtp:
   relayMyhostname: my.host.local
   relayUsername: relayuser
   relayPassword: relaypassword
-  relayNetworks: '10.0.0.0/8,127.0.0.0/8,172.17.0.0/16,192.0.0.0/8'
+  relayNetworks: '10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
 
 # Resources needed for the pods
 resources:
