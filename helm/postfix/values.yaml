@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 # High availability
-replicaCount: 2
+replicaCount: 1
 
 # Role Based Access Control
 # Ref: https://kubernetes.io/docs/admin/authorization/rbac/
