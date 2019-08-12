@@ -4,7 +4,7 @@ TX_SMTP_RELAY_HOST=${TX_SMTP_RELAY_HOST?Missing env var TX_SMTP_RELAY_HOST}
 TX_SMTP_RELAY_MYHOSTNAME=${TX_SMTP_RELAY_MYHOSTNAME?Missing env var TX_SMTP_RELAY_MYHOSTNAME}
 TX_SMTP_RELAY_USERNAME=${TX_SMTP_RELAY_USERNAME?Missing env var TX_SMTP_RELAY_USERNAME}
 TX_SMTP_RELAY_PASSWORD=${TX_SMTP_RELAY_PASSWORD?Missing env var TX_SMTP_RELAY_PASSWORD}
-TX_SMTP_RELAY_NETWORKS=${TX_SMTP_RELAY_NETWORKS:-10.0.0.0/8,127.0.0.0/8,172.17.0.0/16,192.0.0.0/8}
+TX_SMTP_RELAY_NETWORKS=${TX_SMTP_RELAY_NETWORKS:-10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
 
 echo "Setting configuration"
 echo "TX_SMTP_RELAY_HOST        -  ${TX_SMTP_RELAY_HOST}"
@@ -22,6 +22,7 @@ rm /etc/postfix/sasl_passwd || exit 1
 postconf 'smtp_sasl_auth_enable = yes' || exit 1
 postconf 'smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd' || exit 1
 postconf 'smtp_sasl_security_options =' || exit 1
+postconf 'smtp_tls_security_level = may' || exit 1
 
 # These are required
 postconf "relayhost = ${TX_SMTP_RELAY_HOST}" || exit 1
