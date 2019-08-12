@@ -20,6 +20,8 @@ spec:
         release: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ template "postfix.serviceAccountName" . }}
+      imagePullSecrets:
+      - name: regsecret
       containers:
       - name: {{ template "postfix.name" . }}
         image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
