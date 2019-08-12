@@ -33,7 +33,7 @@ serviceAccount:
 
 # Docker image
 image:
-  repository: registry.think-digital.ch/postfix-relay
+  repository: tremblin/postfix-relay
   tag: latest
   pullPolicy: IfNotPresent
 
